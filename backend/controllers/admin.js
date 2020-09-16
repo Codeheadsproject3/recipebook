@@ -5,7 +5,11 @@ exports.getIndex = async (req, res) => {
 
     try {
         console.log(recipe);
-        res.status(200).render('index', { recipe: recipe });
+        // Data rendered as an object and passed down into index.ejs
+        // res.status(200).render('index', { anime: anime });
+
+        // Data returned as json so a fetch/axios requst can get it
+        res.json(recipe);
     } catch (error) {
         console.log(error);
     }
@@ -56,7 +60,8 @@ exports.postRecipe = (req, res) => {
     const recipe = new Recipe({ name: name, image: image, description: description });
     recipe.save();
     console.log('Recipe Added to the database');
-    res.status(201).redirect('/');
+    
+    res.status(201).redirect('http://localhost:3000/');
 };
 
 exports.postEditRecipe = (req, res) => {
