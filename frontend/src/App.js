@@ -10,7 +10,7 @@ const App = () => {
 			try {
 				console.log(data);
 				setLoading(false);
-				setAnime(data);
+				setRecipe(data);
 			} catch (error) {
 				console.log(error);
 			}
@@ -18,15 +18,15 @@ const App = () => {
 		getAPI();
 	}, []);
 
-	const [anime, setAnime] = useState([]);
+	const [recipe, setRecipe] = useState([]);
 	const [loading, setLoading] = useState(true);
 
 	return (
 		<Fragment>
 			<header>
-				<h1>My Anime List: React Front End</h1>
-				<a href="http://localhost:8080">View All Anime</a>
-				<a href="http://localhost:8080/add-anime">Add New Anime &#x27A2;</a>
+				<h1>My Recipe List: React Front End</h1>
+				<a href="http://localhost:8080">View All Recipe</a>
+				<a href="http://localhost:8080/add-recipe">Add New Recipe &#x27A2;</a>
 			</header>
 
 			<div className="container">
@@ -36,19 +36,19 @@ const App = () => {
 					</div>
 				) : (
 					<div>
-						{anime.map((data) => (
+						{recipe.map((data) => (
 							<div key={data._id}>
 								<main>
-									<ul className="anime">
+									<ul className="recipe">
 										<li>
-											<img src={data.image} alt={data.name} className="anime-img" />
+											<img src={data.image} alt={data.name} className="recipe-img" />
 										</li>
 										<li>
 											<h1>{data.name}</h1>
 										</li>
 
 										<li>
-											<a href={data._id}>View Anime &#x21DB;</a>
+											<a href={data._id}>View Recipe &#x21DB;</a>
 										</li>
 									</ul>
 								</main>
@@ -58,8 +58,8 @@ const App = () => {
 				)}
 			</div>
 			{/* <div>
-				<h1>Add New Anime</h1>
-				<form method="POST" action="http://localhost:8080/add-anime">
+				<h1>Add New Recipe</h1>
+				<form method="POST" action="http://localhost:8080/add-recipe">
 					<div>
 						<label>Name</label>
 						<input type="text" name="name" required />
@@ -74,7 +74,7 @@ const App = () => {
 					</div>
 
 					<div>
-						<button type="submit">Add Anime</button>
+						<button type="submit">Add Recipe</button>
 					</div>
 				</form>
 			</div> */}

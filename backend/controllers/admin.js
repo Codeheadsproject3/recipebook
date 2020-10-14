@@ -1,39 +1,39 @@
-const Anime = require('../models/Anime');
+const Recipe = require('../models/Recipe');
 
 exports.getIndex = async (req, res) => {
-	const anime = await Anime.find((data) => data);
+	const recipe = await Recipe.find((data) => data);
 
 	try {
-		console.log(anime);
+		console.log(recipe);
 		// Data rendered as an object and passed down into index.ejs
-		res.status(200).render('index', { anime: anime });
+		res.status(200).render('index', { recipe: recipe });
 
 		// Data returned as json so a fetch/axios requst can get it
-		// res.json(anime);
+		// res.json(recipe);
 	} catch (error) {
 		console.log(error);
 	}
 };
 
-exports.getAnime = async (req, res) => {
-	const animeId = req.params.animeId;
+exports.getRecipe = async (req, res) => {
+	const recipeId = req.params.recipeId;
 
-	const anime = await Anime.findById(animeId, (anime) => anime);
+	const recipe = await Recipe.findById(recipeId, (recipe) => recipe);
 
 	try {
-		console.log(anime);
-		res.status(200).render('anime', { anime: anime });
+		console.log(recipe);
+		res.status(200).render('recipe', { recipe: recipe });
 	} catch (error) {
 		console.log(error);
 	}
 };
 
-exports.getAddAnime = (req, res) => {
-	res.status(200).render('edit-anime', { editing: false });
+exports.getAddRecipe = (req, res) => {
+	res.status(200).render('edit-recipe', { editing: false });
 };
 
-exports.getEditAnime = async (req, res) => {
-	const animeId = req.params.animeId;
+exports.getEditRecipe = async (req, res) => {
+	const recipeId = req.params.recipeId;
 
 	const editMode = req.query.edit;
 
@@ -41,25 +41,25 @@ exports.getEditAnime = async (req, res) => {
 		return res.redirect('/');
 	}
 
-	const anime = await Anime.findById(animeId);
+	const recipe = await Recipe.findById(recipeId);
 
 	try {
-		if (!animeId) {
+		if (!recipeId) {
 			return res.redirect('/');
 		}
-		console.log(anime);
-		res.status(200).render('edit-anime', { anime: anime, editing: editMode });
+		console.log(recipe);
+		res.status(200).render('edit-recipe', { recipe: recipe, editing: editMode });
 	} catch (error) {
 		console.log(error);
 	}
 };
 
-exports.postAnime = (req, res) => {
+exports.postRecipe = (req, res) => {
 	const { name, image, description } = req.body;
 
-	const anime = new Anime({ name: name, image: image, description: description });
-	anime.save();
-	console.log('Anime Added to the database');
+	const recipe = new Recipe({ name: name, image: image, description: description });
+	recipe.save();
+	console.log('Recipe Added to the database');
 
 	// Updated the home route to the React App index page
 	// res.status(201).redirect('http://localhost:3000/');
@@ -68,21 +68,21 @@ exports.postAnime = (req, res) => {
 	res.status(201).redirect('/');
 };
 
-exports.postEditAnime = (req, res) => {
-	const animeId = req.body.animeId;
+exports.postEditRecipe = (req, res) => {
+	const recipeId = req.body.recipeId;
 	const { name, image, description } = req.body;
 
-	Anime.findById(animeId)
-		.then((anime) => {
-			anime.name = name;
-			anime.image = image;
-			anime.description = description;
+	Recipe.findById(recipeId)
+		.then((recipe) => {
+			recipe.name = name;
+			recipe.image = image;
+			recipe.description = description;
 
-			return anime.save();
+			return recipe.save();
 		})
 		.then(() => {
 			console.log('Item Updated');
-			res.status(201).redirect(`/${animeId}`);
+			res.status(201).redirect(`/${recipeId}`);
 		})
 		.catch((err) => {
 			console.log(err);
@@ -90,12 +90,12 @@ exports.postEditAnime = (req, res) => {
 };
 
 exports.postDelete = async (req, res) => {
-	const animeId = req.body.animeId;
+	const recipeId = req.body.recipeeId;
 
-	const anime = await Anime.findByIdAndRemove(animeId, (data) => data);
+	const recipe = await Recipe.findByIdAndRemove(recipeId, (data) => data);
 
 	try {
-		console.log(anime);
+		console.log(recipe);
 		console.log('Item Deleted');
 		res.redirect('/');
 	} catch (error) {

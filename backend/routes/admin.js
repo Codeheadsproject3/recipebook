@@ -5,15 +5,15 @@ const router = express.Router();
 
 router.get('/', adminController.getIndex);
 
-router.get('/add-anime', adminController.getAddAnime);
+router.get('/add-recipe', adminController.getAddRecipe);
 
-router.get('/edit-anime/:animeId', adminController.getEditAnime);
+router.get('/edit-recipe/:recipeId', adminController.getEditRecipe);
 
-router.post('/add-anime', adminController.postAnime);
+router.post('/add-recipe', adminController.postRecipe);
 
-router.post('/edit-anime', adminController.postEditAnime);
+router.post('/edit-recipe', adminController.postEditRecipe);
 
-router.get('/:animeId', adminController.getAnime);
+router.get('/:recipeId', adminController.getRecipe);
 
 router.post('/delete', adminController.postDelete);
 

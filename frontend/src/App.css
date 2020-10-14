@@ -75,7 +75,7 @@ main {
     margin-bottom: 2rem;
 }
 
-.anime {
+.recipe {
     border-left: 0.5px solid #7760A0;
     border-right: 0.5px solid #7760A0;
     list-style: none;
@@ -85,7 +85,7 @@ main {
     max-width: 30rem;
 }
 
-.anime:hover {
+.recipe:hover {
     background: #7760A0;
     opacity: 0.8;
 }
@@ -99,29 +99,29 @@ ul li:nth-child(3) {
     border-right: none;
 } */
 
-.anime-img {
+.recipe-img {
     width: 100%;
     height: 40rem;
 }
 
-.anime h1 {
+.recipe h1 {
     font-size: 2rem;
     height: 8rem;
     text-align: center;
 }
 
-.anime p {
+.recipe p {
     height: 6rem;
 }
 
-.anime h1,
+.recipe h1,
 p {
     padding-left: 2rem;
     padding-right: 2rem;
     color: #ffffff;
 }
 
-.anime a {
+.recipe a {
     display: block;
     border: 0.1rem solid #9C3E6E;
     color: #ffffff;
@@ -133,7 +133,7 @@ p {
     transition: background 1s, border 1s;
 }
 
-.anime a:hover {
+.recipe a:hover {
     background: #ce5292;
     border: 0.1rem solid #c54989;
 }
@@ -172,7 +172,7 @@ textarea {
     background: #f880be;
 }
 
-.container-anime {
+.container-recipe {
     display: grid;
     margin: 0 0 5rem 0;
     max-width: 120rem;
@@ -180,25 +180,25 @@ textarea {
     color: #ffffff;
 }
 
-.container-anime h1 {
+.container-recipe h1 {
     font-size: 3rem;
     text-transform: uppercase;
     padding: 2rem;
 }
 
-.anime-content {
+.recipe-content {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 2rem;
     padding: 2rem;
 }
 
-.anime-content img {
+.recipe-content img {
     width: 100%;
     max-width: 50rem;
 }
 
-.anime-edit-delete {
+.recipe-edit-delete {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     width: 16rem;
@@ -206,8 +206,8 @@ textarea {
     padding: 2rem;
 }
 
-.anime-edit-delete button,
-.anime-edit-delete a {
+.recipe-edit-delete button,
+.recipe-edit-delete a {
     display: block;
     background: #371D5E;
     border: none;
@@ -222,12 +222,12 @@ textarea {
     transition: background 1s, border 1s;
 }
 
-.anime-edit-delete button:hover,
-.anime-edit-delete a:hover {
+.recipe-edit-delete button:hover,
+.recipe-edit-delete a:hover {
     background: #1d0d36;
 }
 
-.anime-description {
+.recipe-description {
     white-space: pre-wrap;
 }
 
@@ -240,7 +240,7 @@ textarea {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .anime-content {
+    .recipe-content {
         grid-template-columns: repeat(1, 1fr);
 
     }
